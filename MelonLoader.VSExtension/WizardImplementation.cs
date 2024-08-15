@@ -27,7 +27,7 @@ namespace MelonLoader.VSExtension
                 WizardDialog inputForm = new WizardDialog();
                 inputForm.ShowDialog();
 
-                replacementsDictionary.Add("$custommessage$", inputForm.CustomMessage);
+                //replacementsDictionary.Add("$custommessage$", inputForm.GamePath);
             }
             catch (Exception ex)
             {

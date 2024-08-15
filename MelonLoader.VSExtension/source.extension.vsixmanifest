@@ -3,7 +3,8 @@
     <Metadata>
         <Identity Id="MelonLoader.VSExtension.a48cf28e-513a-4e17-ac57-fe2c4c4d8a1d" Version="1.0" Language="en-US" Publisher="Lava Gang" />
         <DisplayName>MelonLoader.VSExtension</DisplayName>
-        <Description>Empty VSIX Project.</Description>
+        <Description xml:space="preserve">Extension to handle the wizard for the MelonLoader Mod template.</Description>
+        <Icon>MelonLoader.VSTemplate.ico</Icon>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
