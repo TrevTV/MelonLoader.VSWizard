@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="MelonLoader.WizardExtension.a48cf28e-513a-4e17-ac57-fe2c4c4d8a1d" Version="1.0" Language="en-US" Publisher="Lava Gang" />
         <DisplayName>MelonLoader.WizardExtension</DisplayName>
-        <Description xml:space="preserve">Extension to handle the wizard for the MelonLoader templates.</Description>
+        <Description xml:space="preserve">Extension to handle the wizard for MelonLoader templates.</Description>
         <Icon>MelonLoader.WizardTemplate.ico</Icon>
     </Metadata>
     <Installation>
@@ -21,5 +21,6 @@
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
         <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="MelonLoader.ModTemplate" d:TargetPath="|MelonLoader.ModTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" AssemblyName="|%CurrentProject%;AssemblyName|" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="MelonLoader.PluginTemplate" d:TargetPath="|MelonLoader.PluginTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
     </Assets>
 </PackageManifest>

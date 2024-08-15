@@ -95,6 +95,13 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
+    <ProjectReference Include="..\MelonLoader.PluginTemplate\MelonLoader.PluginTemplate.csproj">
+      <Project>{86A95121-B313-4789-B0FB-7BE19D5CBEC7}</Project>
+      <Name>MelonLoader.PluginTemplate</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MelonLoader.WizardTemplate.ico">

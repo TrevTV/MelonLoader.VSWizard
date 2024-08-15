@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("MelonLoader.ModTemplate")]
+[assembly: AssemblyTitle("MelonLoader.PluginTemplate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lava Gang")]
-[assembly: AssemblyProduct("MelonLoader.ModTemplate")]
+[assembly: AssemblyProduct("MelonLoader.PluginTemplate")]
 [assembly: AssemblyCopyright("Copyright © Lava Gang 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
