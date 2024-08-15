@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace MelonLoader.VSExtension
+namespace MelonLoader.WizardExtension
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,11 +24,11 @@ namespace MelonLoader.VSExtension
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(MelonLoaderVSExtensionPackage.PackageGuidString)]
-    public sealed class MelonLoaderVSExtensionPackage : AsyncPackage
+    [Guid(MelonLoaderWizardExtensionPackage.PackageGuidString)]
+    public sealed class MelonLoaderWizardExtensionPackage : AsyncPackage
     {
-         /// <summary>
-        /// MelonLoader.VSExtensionPackage GUID string.
+        /// <summary>
+        /// MelonLoader.WizardExtensionPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "92d8770b-6508-4ad8-9818-b97507982abf";
 

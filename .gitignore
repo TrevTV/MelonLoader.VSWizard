@@ -396,4 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-MelonLoader.VSExtension/key.snk
+MelonLoader.WizardExtension/key.snk

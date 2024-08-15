@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using UnityVersion = AssetRipper.Primitives.UnityVersion;
 using System.Reflection;
 
-namespace MelonLoader.VSExtension
+namespace MelonLoader.WizardExtension
 {
     // copied from MelonLoader
     internal static class UnityDataParser
@@ -61,7 +61,7 @@ namespace MelonLoader.VSExtension
                     return;
 
                 ClassPackageFile classPackage = null;
-                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MelonLoader.VSExtension.Resources.classdata.tpk"))
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MelonLoader.WizardExtension.Resources.classdata.tpk"))
                     classPackage = assetsManager.LoadClassPackage(stream);
 
                 if (!instance.file.Metadata.TypeTreeEnabled)

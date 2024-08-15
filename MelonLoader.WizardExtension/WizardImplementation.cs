@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 
-namespace MelonLoader.VSExtension
+namespace MelonLoader.WizardExtension
 {
     public class WizardImplementation : IWizard
     {

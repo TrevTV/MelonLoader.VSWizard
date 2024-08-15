@@ -1,7 +1,7 @@
 ﻿using AssetRipper.Primitives;
 using System;
 
-namespace MelonLoader.VSExtension
+namespace MelonLoader.WizardExtension
 {
     public class GameInfo
     {
