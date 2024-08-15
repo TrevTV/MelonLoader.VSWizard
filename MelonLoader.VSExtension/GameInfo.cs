@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AssetRipper.Primitives;
+using System;
 
 namespace MelonLoader.VSExtension
 {
     public class GameInfo
     {
-        private static readonly Version _ml6Version = new Version(0, 6, 0);
+        private static readonly Version _ml6Version = new(0, 6, 0);
 
         // Compat Check
         public bool IsUnityGame { get; set; } = true;
@@ -15,8 +16,12 @@ namespace MelonLoader.VSExtension
         public string Path { get; set; } = "";
         public string ExePath { get; set; } = "";
         public string DataPath { get; set; } = "";
-        public Version MelonVersion { get; set; } = new Version();
+        public Version MelonVersion { get; set; } = new();
         public bool IsMelon6Plus { get => MelonVersion >= _ml6Version; }
         public bool IsIl2Cpp { get; set; } = false;
+
+        public string GameName { get; set; } = "null";
+        public string GameDeveloper { get; set; } = "null";
+        public UnityVersion EngineVersion { get; set; } = UnityVersion.MinVersion;
     }
 }

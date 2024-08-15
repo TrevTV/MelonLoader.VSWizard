@@ -57,7 +57,7 @@
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Class1.cs" />
+    <None Include="Core.cs" />
     <None Include="ProjectTemplate.csproj" />
     <None Include="MelonLoader.VSTemplate.ico" />
   </ItemGroup>

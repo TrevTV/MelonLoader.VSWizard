@@ -16,7 +16,7 @@ namespace MelonLoader.VSExtension
     public partial class WizardDialog : Window
     {
         public GameInfo GameInfo => _gameInfo;
-        private GameInfo _gameInfo;
+        private readonly GameInfo _gameInfo;
 
         private bool _wasLastStatusReset = true;
 
@@ -33,16 +33,14 @@ namespace MelonLoader.VSExtension
 
         private void OnClickFolderPicker(object sender, RoutedEventArgs e)
         {
-            using (OpenFileDialog dialog = new OpenFileDialog())
-            {
-                dialog.Title = "Select Game Executable";
-                dialog.Multiselect = false;
-                dialog.Filter = "Unity Executables (*.exe)|*.exe";
+            using OpenFileDialog dialog = new();
+            dialog.Title = "Select Game Executable";
+            dialog.Multiselect = false;
+            dialog.Filter = "Unity Executables (*.exe)|*.exe";
 
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    GamePathTextBox.Text = Path.GetDirectoryName(dialog.FileName);
-                }
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                GamePathTextBox.Text = Path.GetDirectoryName(dialog.FileName);
             }
         }
 
@@ -113,11 +111,17 @@ namespace MelonLoader.VSExtension
             }
 
             _gameInfo.MelonVersion = Version.Parse(fvi.FileVersion);
+            if (_gameInfo.MelonVersion < new Version(0, 5, 0))
+            {
+                UpdateStatus("The installed MelonLoader version is too old. This wizard only supports MelonLoader 0.5+.", true);
+                _gameInfo.IsMelonValid = false;
+                return;
+            }
 
             UpdateStatus($"MelonVersion = {_gameInfo.MelonVersion}");
             UpdateStatus($"IsMelon6Plus = {_gameInfo.IsMelon6Plus}");
 
-            // TODO: do something with this
+            UnityDataParser.Run(_gameInfo);
         }
 
         private void UpdateStatus(string status, bool reset = false)
