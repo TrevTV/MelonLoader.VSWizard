@@ -11,6 +11,7 @@
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<AssemblyName>$safeprojectname$</AssemblyName>
 		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>$IMPLICIT_USINGS$</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -118,6 +118,7 @@ namespace MelonLoader.VSExtension
             _replacements.Add("$GAME_DEV$", info.GameDeveloper);
             _replacements.Add("$GAME_NAME$", info.GameName);
             _replacements.Add("$INIT_METHOD_NAME$", info.MelonVersion >= new Version(0, 5, 5) ? "OnInitializeMelon" : "OnApplicationStart");
+            _replacements.Add("$IMPLICIT_USINGS$", framework == "35" ? "disable" : "enable");
             _replacements.Add("$AUTHOR$", Environment.UserName);
             _replacements.Add("$FRAMEWORK_VER$", framework);
             _replacements.Add("$PROJ_REFERENCES$", referencesBuilder.ToString());
