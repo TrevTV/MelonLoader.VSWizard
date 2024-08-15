@@ -59,10 +59,10 @@
   <ItemGroup>
     <None Include="Core.cs" />
     <None Include="ProjectTemplate.csproj" />
-    <None Include="MelonLoader.VSTemplate.ico" />
+    <None Include="MelonLoader.ModTemplate.ico" />
   </ItemGroup>
   <ItemGroup>
-    <VSTemplate Include="MelonLoader.VSTemplate.vstemplate" />
+    <VSTemplate Include="MelonLoader.ModTemplate.vstemplate" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

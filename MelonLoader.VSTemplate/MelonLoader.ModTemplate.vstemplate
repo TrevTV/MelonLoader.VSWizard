@@ -3,7 +3,7 @@
   <TemplateData>
     <Name>MelonLoader Mod</Name>
     <Description>A wizard for setting up MelonLoader mods.</Description>
-    <Icon>MelonLoader.VSTemplate.ico</Icon>
+    <Icon>MelonLoader.ModTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <LanguageTag>csharp</LanguageTag>
     <SortOrder>1000</SortOrder>

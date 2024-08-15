@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonLoader.VSTemplate", "MelonLoader.VSTemplate\MelonLoader.VSTemplate.csproj", "{D7920CFA-47EF-4A62-86C1-7FF02737B0CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonLoader.ModTemplate", "MelonLoader.VSTemplate\MelonLoader.ModTemplate.csproj", "{D7920CFA-47EF-4A62-86C1-7FF02737B0CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MelonLoader.VSExtension", "MelonLoader.VSExtension\MelonLoader.VSExtension.csproj", "{B63634D6-971E-4FA8-AC31-4C8D6977FBCA}"
 EndProject

@@ -88,9 +88,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MelonLoader.VSTemplate\MelonLoader.VSTemplate.csproj">
+    <ProjectReference Include="..\MelonLoader.VSTemplate\MelonLoader.ModTemplate.csproj">
       <Project>{D7920CFA-47EF-4A62-86C1-7FF02737B0CD}</Project>
-      <Name>MelonLoader.VSTemplate</Name>
+      <Name>MelonLoader.ModTemplate</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>

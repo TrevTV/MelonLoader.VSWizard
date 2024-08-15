@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MelonLoader.VSTemplate")]
+[assembly: AssemblyTitle("MelonLoader.ModTemplate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Lava Gang")]
-[assembly: AssemblyProduct("MelonLoader.VSTemplate")]
+[assembly: AssemblyProduct("MelonLoader.ModTemplate")]
 [assembly: AssemblyCopyright("Copyright © Lava Gang 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
