@@ -36,7 +36,6 @@
                 Margin="307,34,0,0"
                 VerticalAlignment="Top"
                 Height="18"
-                IsEnabled="False"
                 Click="OnClickFolderPicker" />
         <TextBlock HorizontalAlignment="Left"
                    Margin="10,67,0,0"

@@ -6,7 +6,6 @@
     <Icon>MelonLoader.VSTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <LanguageTag>csharp</LanguageTag>
-    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>9925f0be-8acf-47cb-b342-7a1d0e7a05dd</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>

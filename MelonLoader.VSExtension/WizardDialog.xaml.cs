@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace MelonLoader.VSExtension
 {
@@ -32,19 +33,28 @@ namespace MelonLoader.VSExtension
 
         private void OnClickFolderPicker(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog openFileDlg = new System.Windows.Forms.FolderBrowserDialog();
-            var result = openFileDlg.ShowDialog();
-            if (result.ToString() != string.Empty)
+            using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                GamePathTextBox.Text = openFileDlg.SelectedPath;
+                dialog.Title = "Select Game Executable";
+                dialog.Multiselect = false;
+                dialog.Filter = "Unity Executables (*.exe)|*.exe";
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    GamePathTextBox.Text = Path.GetDirectoryName(dialog.FileName);
+                }
             }
         }
 
         private void GamePathTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            TryParseGamePath(GamePathTextBox.Text);
+        }
+
+        private void TryParseGamePath(string dir)
+        {
             UpdateStatus("", true);
 
-            string dir = GamePathTextBox.Text;
             _gameInfo.Path = dir;
 
             if (string.IsNullOrWhiteSpace(dir) || !Directory.Exists(dir))
@@ -54,14 +64,26 @@ namespace MelonLoader.VSExtension
             }
 
             var files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
-            
-            // TODO: not perfect. LiS:BtS doesnt have the player dll
-            if (!files.Any(f => f.EndsWith("UnityPlayer.dll")))
+
+            string exe = files.FirstOrDefault(f => f.EndsWith(".exe") && !f.Contains("UnityCrashHandler"));
+
+            if (string.IsNullOrWhiteSpace(exe))
             {
-                UpdateStatus("Path is not a Unity game.", true);
+                UpdateStatus("Path does not contain an EXE.", true);
                 _gameInfo.IsUnityGame = false;
                 return;
             }
+
+            string dataDir = Path.Combine(Path.GetDirectoryName(exe), Path.GetFileNameWithoutExtension(exe) + "_Data");
+            if (!Directory.Exists(dataDir))
+            {
+                UpdateStatus("Path does not contain a Data folder. It may not be a Unity game.", true);
+                _gameInfo.IsUnityGame = false;
+                return;
+            }
+
+            _gameInfo.ExePath = exe;
+            _gameInfo.DataPath = dataDir;
 
             if (!files.Any(f => f.EndsWith("MelonLoader.dll")))
             {
@@ -94,7 +116,7 @@ namespace MelonLoader.VSExtension
 
             UpdateStatus($"MelonVersion = {_gameInfo.MelonVersion}");
             UpdateStatus($"IsMelon6Plus = {_gameInfo.IsMelon6Plus}");
-            
+
             // TODO: do something with this
         }
 

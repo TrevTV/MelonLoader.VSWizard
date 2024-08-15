@@ -13,6 +13,8 @@ namespace MelonLoader.VSExtension
 
         // Data
         public string Path { get; set; } = "";
+        public string ExePath { get; set; } = "";
+        public string DataPath { get; set; } = "";
         public Version MelonVersion { get; set; } = new Version();
         public bool IsMelon6Plus { get => MelonVersion >= _ml6Version; }
         public bool IsIl2Cpp { get; set; } = false;
