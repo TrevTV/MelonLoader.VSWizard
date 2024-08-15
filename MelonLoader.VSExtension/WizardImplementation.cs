@@ -59,8 +59,20 @@ namespace MelonLoader.VSExtension
 
             var info = TryParseGamePath(Path.GetDirectoryName(dialog.FileName));
 
-            #region Framework
+            string framework = GetFramework(info);
 
+            _replacements.Add("$GAME_DIR$", info.Path);
+            _replacements.Add("$GAME_DEV$", info.GameDeveloper);
+            _replacements.Add("$GAME_NAME$", info.GameName);
+            _replacements.Add("$FRAMEWORK_VER$", framework);
+            _replacements.Add("$AUTHOR$", Environment.UserName);
+            _replacements.Add("$PROJ_REFERENCES$", GenerateReferences(info));
+            _replacements.Add("$INIT_METHOD_NAME$", info.MelonVersion >= new Version(0, 5, 5) ? "OnInitializeMelon" : "OnApplicationStart");
+            _replacements.Add("$IMPLICIT_USINGS$", framework == "35" ? "disable" : "enable");
+        }
+
+        private string GetFramework(GameInfo info)
+        {
             string framework = "6.0";
             if (!info.IsMelon6Plus && info.IsIl2Cpp)
                 framework = "472";
@@ -77,10 +89,11 @@ namespace MelonLoader.VSExtension
                     framework = "35";
             }
 
-            #endregion
+            return framework;
+        }
 
-            #region Reference Generation
-
+        private string GenerateReferences(GameInfo info)
+        {
             string il2cppDllDir = info.IsMelon6Plus ? Path.Combine(info.Path, "MelonLoader", "Il2CppAssemblies") : Path.Combine(info.Path, "MelonLoader", "Managed");
             string dllDir = info.IsIl2Cpp ? il2cppDllDir : Path.Combine(info.DataPath, "Managed");
 
@@ -112,16 +125,7 @@ namespace MelonLoader.VSExtension
                 referencesBuilder.AppendLine($"\t\t</Reference>");
             }
 
-            #endregion
-
-            _replacements.Add("$GAME_DIR$", info.Path);
-            _replacements.Add("$GAME_DEV$", info.GameDeveloper);
-            _replacements.Add("$GAME_NAME$", info.GameName);
-            _replacements.Add("$INIT_METHOD_NAME$", info.MelonVersion >= new Version(0, 5, 5) ? "OnInitializeMelon" : "OnApplicationStart");
-            _replacements.Add("$IMPLICIT_USINGS$", framework == "35" ? "disable" : "enable");
-            _replacements.Add("$AUTHOR$", Environment.UserName);
-            _replacements.Add("$FRAMEWORK_VER$", framework);
-            _replacements.Add("$PROJ_REFERENCES$", referencesBuilder.ToString());
+            return referencesBuilder.ToString();
         }
 
         private GameInfo TryParseGamePath(string dir)
