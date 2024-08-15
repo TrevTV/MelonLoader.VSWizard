@@ -56,9 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MelonLoader.VSExtensionPackage.cs" />
     <Compile Include="UnityDataParser.cs" />
-    <Compile Include="WizardDialog.xaml.cs">
-      <DependentUpon>WizardDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WizardImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,12 +86,6 @@
     <PackageReference Include="StrongNamer">
       <Version>0.2.5</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="WizardDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MelonLoader.VSTemplate\MelonLoader.VSTemplate.csproj">
