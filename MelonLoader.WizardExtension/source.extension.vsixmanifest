@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="MelonLoader.WizardExtension.a48cf28e-513a-4e17-ac57-fe2c4c4d8a1d" Version="1.0" Language="en-US" Publisher="Lava Gang" />
+        <Identity Id="MelonLoader.WizardExtension.a48cf28e-513a-4e17-ac57-fe2c4c4d8a1d" Version="1.1.0" Language="en-US" Publisher="Lava Gang" />
         <DisplayName>MelonLoader.WizardExtension</DisplayName>
         <Description xml:space="preserve">Extension to handle the wizard for MelonLoader templates.</Description>
         <Icon>MelonLoader.WizardExtension.ico</Icon>
