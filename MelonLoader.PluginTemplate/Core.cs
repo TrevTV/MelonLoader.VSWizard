@@ -8,7 +8,7 @@ public class Core : MelonPlugin
 {
     public override void OnPreInitialization()
     {
-        LoggerInstance.Msg("Initialized.");
+        LoggerInstance.Msg("Pre-initialization.");
     }
 
     public override void $INIT_METHOD_NAME$()
