@@ -66,7 +66,7 @@ namespace MelonLoader.WizardExtension
             _replacements.Add("$GAME_NAME$", info.GameName);
             _replacements.Add("$FRAMEWORK_VER$", framework);
             _replacements.Add("$AUTHOR$", Environment.UserName);
-            _replacements.Add("$PROJ_REFERENCES$", GenerateReferences(info));
+            _replacements.Add("$PROJ_REFERENCES$", GenerateReferences(info, framework));
             _replacements.Add("$INIT_METHOD_NAME$", info.MelonVersion >= new Version(0, 5, 5) ? "OnInitializeMelon" : "OnApplicationStart");
             _replacements.Add("$IMPLICIT_USINGS$", framework == "35" ? "disable" : "enable");
         }
@@ -92,7 +92,7 @@ namespace MelonLoader.WizardExtension
             return framework;
         }
 
-        private string GenerateReferences(GameInfo info)
+        private string GenerateReferences(GameInfo info, string framework)
         {
             string il2cppDllDir = info.IsMelon6Plus ? Path.Combine(info.Path, "MelonLoader", "Il2CppAssemblies") : Path.Combine(info.Path, "MelonLoader", "Managed");
             string dllDir = info.IsIl2Cpp ? il2cppDllDir : Path.Combine(info.DataPath, "Managed");
@@ -116,6 +116,15 @@ namespace MelonLoader.WizardExtension
                     files.Add(Path.Combine(info.Path, "MelonLoader", "net6", "Il2CppInterop.Runtime.dll"));
                     files.Add(Path.Combine(info.Path, "MelonLoader", "net6", "Il2CppInterop.Common.dll"));
                 }
+            }
+
+            // this doesn't seem to be needed on all net35 mods for some reason, but at least on LiS:BtS it was, and it didn't seem to affect others so may as well add it
+            if (framework == "35")
+            {
+                if (info.IsMelon6Plus)
+                    files.Add(Path.Combine(info.Path, "MelonLoader", "net35", "ValueTupleBridge.dll"));
+                else
+                    files.Add(Path.Combine(info.Path, "MelonLoader", "ValueTupleBridge.dll"));
             }
 
             foreach (string file in files)
