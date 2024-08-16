@@ -175,9 +175,12 @@ namespace MelonLoader.WizardExtension
 
             try
             {
-                // it's possible to have multiple MelonLoader.dlls due to 0.6+'s multi-framework stuff
-                // though you should never have multiple of different versions so this should be fine
-                fvi = FileVersionInfo.GetVersionInfo(files.First(f => f.EndsWith("MelonLoader.dll")));
+                string prefix = "MelonLoader";
+                if (files.Any(f => f.Contains(prefix + "\\net6") || f.Contains(prefix + "\\net35")))
+                    prefix += "\\" + (info.IsIl2Cpp ? "net6" : "net35");
+
+                string path = files.First(f => f.EndsWith(prefix + "\\MelonLoader.dll"));
+                fvi = FileVersionInfo.GetVersionInfo(path);
             }
             catch
             {
