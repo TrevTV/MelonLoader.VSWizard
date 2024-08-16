@@ -7,7 +7,7 @@ It handles the creation of the required boilerplate (the `MelonMod`/`MelonPlugin
 
 ## Usage
 0. Download MelonLoader to your game and run it once before continuing.
-1. Download the VSIX from the [Releases](./Releases) tab.
+1. Download the VSIX from the [Releases](https://github.com/TrevTV/MelonLoader.VSWizard/releases) tab.
 2. Close all instances of Visual Studio and run the VSIX installer (double-clicking it should open it).
 3. Open Visual Studio and create a new project.
 4. Search for `MelonLoader` and click on either Mod or Plugin.
