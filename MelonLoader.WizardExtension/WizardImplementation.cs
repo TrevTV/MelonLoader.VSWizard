@@ -129,6 +129,9 @@ namespace MelonLoader.WizardExtension
 
             foreach (string file in files)
             {
+                if (Path.GetFileName(file) == "mscorlib.dll")
+                    continue;
+
                 referencesBuilder.AppendLine($"\t\t<Reference Include=\"{Path.GetFileNameWithoutExtension(file)}\">");
                 referencesBuilder.AppendLine($"\t\t\t<HintPath>{file}</HintPath>");
                 referencesBuilder.AppendLine($"\t\t</Reference>");
