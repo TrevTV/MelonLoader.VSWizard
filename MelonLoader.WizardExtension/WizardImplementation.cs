@@ -97,6 +97,12 @@ namespace MelonLoader.WizardExtension
             string il2cppDllDir = info.IsMelon6Plus ? Path.Combine(info.Path, "MelonLoader", "Il2CppAssemblies") : Path.Combine(info.Path, "MelonLoader", "Managed");
             string dllDir = info.IsIl2Cpp ? il2cppDllDir : Path.Combine(info.DataPath, "Managed");
 
+            if (info.IsIl2Cpp && (!Directory.Exists(il2cppDllDir) || !File.Exists(Path.Combine(info.Path, "MelonLoader", "Dependencies", "Il2CppAssemblyGenerator", "Config.cfg"))))
+            {
+                MessageBox.Show("Game has no generated assemblies. Please run it once with MelonLoader installed before creating a project.");
+                throw new WizardCancelledException();
+            }
+
             StringBuilder referencesBuilder = new();
             List<string> files = [.. Directory.GetFiles(dllDir, "*.dll")];
             if (info.MelonVersion <= new Version(0, 5, 3))
@@ -173,26 +179,25 @@ namespace MelonLoader.WizardExtension
             info.ExePath = exe;
             info.DataPath = dataDir;
 
-            if (!files.Any(f => f.EndsWith("MelonLoader.dll")))
+            string prefix = "MelonLoader";
+            if (files.Any(f => f.Contains(prefix + "\\net6") || f.Contains(prefix + "\\net35")))
+                prefix += "\\" + (info.IsIl2Cpp ? "net6" : "net35");
+            if (!files.Any(f => f.EndsWith(prefix + "\\MelonLoader.dll")))
             {
                 ThrowError("Game does not have MelonLoader installed.\nInstall and run MelonLoader once before using this wizard.");
                 info.HasMelonInstalled = false;
                 return info;
             }
 
-            if (files.Any(f => f.EndsWith("global-metadata.dat")))
+            if (File.Exists(Path.Combine(info.DataPath, "il2cpp_data", "Metadata", "global-metadata.dat")))
                 info.IsIl2Cpp = true;
 
             FileVersionInfo fvi = null;
 
             try
             {
-                string prefix = "MelonLoader";
-                if (files.Any(f => f.Contains(prefix + "\\net6") || f.Contains(prefix + "\\net35")))
-                    prefix += "\\" + (info.IsIl2Cpp ? "net6" : "net35");
-
-                string path = files.First(f => f.EndsWith(prefix + "\\MelonLoader.dll"));
-                fvi = FileVersionInfo.GetVersionInfo(path);
+                string melonPath = files.First(f => f.EndsWith(prefix + "\\MelonLoader.dll"));
+                fvi = FileVersionInfo.GetVersionInfo(melonPath);
             }
             catch
             {
