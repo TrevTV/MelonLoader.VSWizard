@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>MelonLoader Mod (Manual)</Name>
+    <Description>A template for setting up MelonLoader mods. This assumes the mod uses .NET 6 on MelonLoader 0.6+. Requires references to be added manually.</Description>
+    <Icon>MelonLoader.ManualModTemplate.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <LanguageTag>csharp</LanguageTag>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>fe6fb177-df66-404e-91ae-66a18a1e55bb</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>MelonLoaderMod</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Core.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

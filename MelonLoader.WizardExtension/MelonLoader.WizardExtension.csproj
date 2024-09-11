@@ -88,6 +88,20 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MelonLoader.ManualModTemplate\MelonLoader.ManualModTemplate.csproj">
+      <Project>{3B4D5FA1-CEE0-42D2-B331-02C0BE551F7C}</Project>
+      <Name>MelonLoader.ManualModTemplate</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\MelonLoader.ManualPluginTemplate\MelonLoader.ManualPluginTemplate.csproj">
+      <Project>{E116C734-7C62-4E74-9A2B-3FACE9003C6B}</Project>
+      <Name>MelonLoader.ManualPluginTemplate</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\MelonLoader.ModTemplate\MelonLoader.ModTemplate.csproj">
       <Project>{D7920CFA-47EF-4A62-86C1-7FF02737B0CD}</Project>
       <Name>MelonLoader.ModTemplate</Name>
