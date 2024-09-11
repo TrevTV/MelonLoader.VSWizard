@@ -135,7 +135,7 @@ namespace MelonLoader.WizardExtension
 
             foreach (string file in files)
             {
-                if (Path.GetFileName(file) == "mscorlib.dll")
+                if (IsBlacklistedReference(Path.GetFileName(file)))
                     continue;
 
                 referencesBuilder.AppendLine($"\t\t<Reference Include=\"{Path.GetFileNameWithoutExtension(file)}\">");
@@ -216,6 +216,17 @@ namespace MelonLoader.WizardExtension
 
             UnityDataParser.Run(info);
             return info;
+        }
+
+        private bool IsBlacklistedReference(string fileName)
+        {
+            if (fileName == "mscorlib.dll" || fileName == "netstandard.dll" || fileName == "Mono.Security.dll")
+                return true;
+
+            if (fileName.StartsWith("System"))
+                return true;
+
+            return false;
         }
 
         private void ThrowError(string status)
