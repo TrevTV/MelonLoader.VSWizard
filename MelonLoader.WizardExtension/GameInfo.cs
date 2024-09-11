@@ -20,8 +20,8 @@ namespace MelonLoader.WizardExtension
         public bool IsMelon6Plus { get => MelonVersion >= _ml6Version; }
         public bool IsIl2Cpp { get; set; } = false;
 
-        public string GameName { get; set; } = "null";
-        public string GameDeveloper { get; set; } = "null";
+        public string GameName { get; set; } = null;
+        public string GameDeveloper { get; set; } = null;
         public UnityVersion EngineVersion { get; set; } = UnityVersion.MinVersion;
     }
 }

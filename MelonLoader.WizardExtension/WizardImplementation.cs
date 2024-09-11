@@ -62,8 +62,8 @@ namespace MelonLoader.WizardExtension
             string framework = GetFramework(info);
 
             _replacements.Add("$GAME_DIR$", info.Path);
-            _replacements.Add("$GAME_DEV$", info.GameDeveloper);
-            _replacements.Add("$GAME_NAME$", info.GameName);
+            _replacements.Add("$GAME_DEV$", info.GameDeveloper == null ? "null" : $"\"{info.GameDeveloper}\"");
+            _replacements.Add("$GAME_NAME$", info.GameName == null ? "null" : $"\"{info.GameName}\"");
             _replacements.Add("$FRAMEWORK_VER$", framework);
             _replacements.Add("$AUTHOR$", Environment.UserName);
             _replacements.Add("$PROJ_REFERENCES$", GenerateReferences(info, framework));

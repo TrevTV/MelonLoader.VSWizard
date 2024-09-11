@@ -32,9 +32,9 @@ namespace MelonLoader.WizardExtension
             }
 
             if (string.IsNullOrEmpty(info.GameDeveloper))
-                info.GameDeveloper = "null";
+                info.GameDeveloper = null;
             if (string.IsNullOrEmpty(info.GameName))
-                info.GameName = "null";
+                info.GameName = null;
         }
 
         private static void ReadGameInfo(AssetsManager assetsManager, GameInfo info)
