@@ -57,7 +57,7 @@ namespace MelonLoader.WizardExtension
             if (dialog.ShowDialog() != DialogResult.OK)
                 throw new WizardCancelledException();
 
-            var info = TryParseGamePath(Path.GetDirectoryName(dialog.FileName));
+            var info = TryParseGamePath(dialog.FileName);
 
             string framework = GetFramework(info);
 
@@ -146,9 +146,20 @@ namespace MelonLoader.WizardExtension
             return referencesBuilder.ToString();
         }
 
-        private GameInfo TryParseGamePath(string dir)
+        private GameInfo TryParseGamePath(string exe)
         {
             GameInfo info = new();
+
+            // likely won't occur, but may as well just in case
+            if (string.IsNullOrWhiteSpace(exe))
+            {
+                ThrowError("Path does not contain an EXE.");
+                info.IsUnityGame = false;
+                return info;
+            }
+
+            string dir = Path.GetDirectoryName(exe);
+
             info.Path = dir;
 
             if (string.IsNullOrWhiteSpace(dir) || !Directory.Exists(dir))
@@ -159,16 +170,7 @@ namespace MelonLoader.WizardExtension
 
             var files = Directory.GetFiles(dir, "*.*", SearchOption.AllDirectories);
 
-            string exe = files.FirstOrDefault(f => f.EndsWith(".exe") && !f.Contains("UnityCrashHandler"));
-
-            if (string.IsNullOrWhiteSpace(exe))
-            {
-                ThrowError("Path does not contain an EXE.");
-                info.IsUnityGame = false;
-                return info;
-            }
-
-            string dataDir = Path.Combine(Path.GetDirectoryName(exe), Path.GetFileNameWithoutExtension(exe) + "_Data");
+            string dataDir = Path.Combine(dir, Path.GetFileNameWithoutExtension(exe) + "_Data");
             if (!Directory.Exists(dataDir))
             {
                 ThrowError("Path does not contain a Data folder. It may not be a Unity game.");
