@@ -1,6 +1,6 @@
 # MelonLoader VS Wizard
 
-An automated Visual Studio 2022 template for creating MelonLoader mods and plugins. It supports MelonLoader 0.5.0 to the latest as well as Il2Cpp and Mono games.
+An automated Visual Studio template for creating MelonLoader mods and plugins. It supports MelonLoader 0.5.0 to the latest as well as Il2Cpp and Mono games.
 
 ## What does it handle?
 It handles the creation of the required boilerplate (the `MelonMod`/`MelonPlugin` class, `MelonInfo`, and `MelonGame`) as well as referencing the required assemblies for mod development, mainly MelonLoader, Harmony, and for Il2Cpp, proxy assemblies and the unhollower (Il2CppAssemblyUnhollower or Il2CppInterop). It also handles variation between MelonLoader or Unity versions, such as framework versions or override changes.
