@@ -138,8 +138,10 @@ namespace MelonLoader.WizardExtension
                 if (IsBlacklistedReference(Path.GetFileName(file)))
                     continue;
 
-                referencesBuilder.AppendLine($"\t\t<Reference Include=\"{Path.GetFileNameWithoutExtension(file)}\">");
-                referencesBuilder.AppendLine($"\t\t\t<HintPath>{file}</HintPath>");
+                string filePath = MakeRelativePath(info.Path, file);
+
+                referencesBuilder.AppendLine($"\t\t<Reference Include=\"{Path.GetFileNameWithoutExtension(filePath)}\">");
+                referencesBuilder.AppendLine($"\t\t\t<HintPath>$(GamePath)/{filePath}</HintPath>");
                 referencesBuilder.AppendLine($"\t\t</Reference>");
             }
 
@@ -244,5 +246,38 @@ namespace MelonLoader.WizardExtension
         // These methods are only called for item templates, not for project templates.
         public bool ShouldAddProjectItem(string filePath) => true;
         public void ProjectItemFinishedGenerating(ProjectItem projectItem) { }
+
+        // based on https://stackoverflow.com/questions/275689/how-to-get-relative-path-from-absolute-path#340454
+        public static string MakeRelativePath(string fromPath, string toPath)
+        {
+            if (string.IsNullOrEmpty(fromPath)) throw new ArgumentNullException("fromPath");
+            if (string.IsNullOrEmpty(toPath)) throw new ArgumentNullException("toPath");
+
+            // Normalize to absolute paths first
+            fromPath = Path.GetFullPath(fromPath);
+            toPath = Path.GetFullPath(toPath);
+
+            // If fromPath is a file, use its directory
+            if (File.Exists(fromPath))
+                fromPath = Path.GetDirectoryName(fromPath);
+
+            // Ensure directory path ends with separator so URI treats it as a directory
+            if (!fromPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
+                fromPath += Path.DirectorySeparatorChar;
+
+            Uri fromUri = new Uri(fromPath);
+            Uri toUri = new Uri(toPath);
+
+            if (fromUri.Scheme != toUri.Scheme)
+                return toPath; // Can't make relative across schemes
+
+            Uri relativeUri = fromUri.MakeRelativeUri(toUri);
+            string relativePath = Uri.UnescapeDataString(relativeUri.ToString());
+
+            if (toUri.Scheme.Equals("file", StringComparison.OrdinalIgnoreCase))
+                relativePath = relativePath.Replace('/', Path.DirectorySeparatorChar);
+
+            return relativePath;
+        }
     }
 }

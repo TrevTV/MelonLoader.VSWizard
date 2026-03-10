@@ -15,6 +15,7 @@
   <TemplateContent>
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" OpenInEditor="true">Core.cs</ProjectItem>
+		<ProjectItem ReplaceParameters="true">Directory.Build.props</ProjectItem>
     </Project>
   </TemplateContent>
 	<WizardExtension>

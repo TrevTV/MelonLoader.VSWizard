@@ -25,9 +25,10 @@ $PROJ_REFERENCES$
 
 	<ItemGroup>
 		<Compile Include="Core.cs" />
+		<Content Include="Directory.Build.props" />
 	</ItemGroup>
 	
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="COPY &quot;$(TargetPath)&quot; &quot;$GAME_DIR$\Plugins&quot;" />
+		<Exec Command="COPY &quot;$(TargetPath)&quot; &quot;$(GamePath)/Plugins&quot;" />
 	</Target>
 </Project>
